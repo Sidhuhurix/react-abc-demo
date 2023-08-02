@@ -1,21 +1,49 @@
-import "./App.css";
+import React from "react";
+// import "./App.css";
+//import { MovieCard } from "./MovieCard";
+import { Colorgame } from "./colorgames";
+import { Movielist } from "./movies";
+
+import { Routes, Route, Link } from "react-router-dom";
 
 export default function App() {
   return (
     <div className="App">
-  
-      <Profile Name="Sid" image="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
-      <Profile Name="Madhu" image="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"/>
-      <Profile Name="HemaPriya" image="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"/>
-    
+      {/* <h1>Welcome to React Router!</h1> */}
+
+      {/* <Colorgame /> */}
+      {/* <Movielist /> */}
+      <nav>
+        <Link to="/color-game">Colorgame</Link>
+        <Link to="/sid">
+          <h1>welcome</h1>
+        </Link>
+        <Link to="/">Home</Link>
+      </nav>
+      <Routes>
+        <Route path="/sid" element={<h1>Welcome to React Router!</h1>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/movielist" element={<Movielist />} />
+        <Route path="/color-game" element={<Colorgame />} />
+        {/* <Route path="about" element={<About />} /> */}
+      </Routes>
     </div>
   );
 }
-function Profile({Name,image}){
-  return(
-  <div className="profile">
-      <img className="pic" src={image}/>
-      <h2>hello {Name}</h2>
-  </div>
+
+function Home() {
+  return (
+    <div>
+      <h1>hello hema</h1>
+    </div>
   );
+}
+export function ColorBox({ clr }) {
+  const styles = {
+    height: "25px",
+    width: "250px",
+    background: clr,
+    marginTop: "5px",
+  };
+  return <div style={styles}></div>;
 }
