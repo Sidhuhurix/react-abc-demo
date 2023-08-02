@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./mov.css";
 
 export function Movielist() {
-  const [Name, setname] = useState();
+  const [name, setName] = useState();
   const [summary, setsummary] = useState();
   const [rating, setrating] = useState();
   const [poster, setposter] = useState();
@@ -103,7 +103,7 @@ export function Movielist() {
       <div>
         <input
           type="text"
-          onChange={(event) => setname(event.target.value)}
+          onChange={(event) => setName(event.target.value)}
           placeholder="Name"
         />
         <input
@@ -126,7 +126,7 @@ export function Movielist() {
             setMovies([
               ...Movies,
               {
-                name: Name,
+                name: name,
                 poster: poster,
                 rating: rating,
                 summary: summary,
