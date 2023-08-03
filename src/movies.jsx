@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./mov.css";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import TextField from "@mui/material/TextField";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -204,7 +205,17 @@ function Moviecard({ name, poster, summary, rating, moreinfo }) {
       {/* <button onClick={() => setsummary1(summary1 == true ? false : true)}>
         Moreinfo
       </button> */}
-      <button onClick={() => navigate("/color-game")}> colors </button>
+      {/* /movies/0 */}
+      <IconButton
+        onClick={() => navigate("/movies/0")}
+        color="primary"
+        aria-label="More info"
+      >
+        <InfoIcon />
+        {/* <KeyboardArrowDownIcon /> */}
+      </IconButton>
+
+      {/* <button onClick={() => navigate("/color-game")}> colors </button> */}
       {show ? <p>{summary}</p> : ""}
 
       {/* <p>{summary}</p> */}

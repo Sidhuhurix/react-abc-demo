@@ -19,12 +19,15 @@ export default function App() {
           <h1>welcome</h1>
         </Link>
         <Link to="/">Home</Link>
+        <p></p>
+        <Link to="/movies">Movies</Link>
       </nav>
       <Routes>
         <Route path="/sid" element={<h1>Welcome to my page!</h1>} />
         <Route path="/" element={<Home />} />
-        <Route path="/movielist" element={<Movielist />} />
+        <Route path="/movies" element={<Movielist />} />
         <Route path="/color-game" element={<Colorgame />} />
+        <Route path="*" element={<Error />} />
         {/* <Route path="about" element={<About />} /> */}
       </Routes>
     </div>
@@ -35,6 +38,13 @@ function Home() {
   return (
     <div>
       <h1>hello Sid</h1>
+    </div>
+  );
+}
+function Error() {
+  return (
+    <div>
+      <h1>Error 404 not found </h1>
     </div>
   );
 }
