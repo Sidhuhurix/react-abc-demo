@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.css";
+import "./main.css";
 //import { MovieCard } from "./MovieCard";
 import { Colorgame } from "./colorgames";
 import { Movielist } from "./movies";
@@ -21,7 +21,7 @@ export default function App() {
         <Link to="/">Home</Link>
       </nav>
       <Routes>
-        <Route path="/sid" element={<h1>Welcome to React Router!</h1>} />
+        <Route path="/sid" element={<h1>Welcome to my page!</h1>} />
         <Route path="/" element={<Home />} />
         <Route path="/movielist" element={<Movielist />} />
         <Route path="/color-game" element={<Colorgame />} />
@@ -34,7 +34,7 @@ export default function App() {
 function Home() {
   return (
     <div>
-      <h1>hello hema</h1>
+      <h1>hello Sid</h1>
     </div>
   );
 }
