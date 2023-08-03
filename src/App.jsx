@@ -128,7 +128,21 @@ export default function App() {
 
 function MovieDetails({ Movies }) {
   const { id } = useParams();
-  return <h2>Details- {Movies[id].name}</h2>;
+  const name = Movies[id];
+  return (
+    <div className="moviecard">
+      <img className="pic" src={name.poster} />
+      <h2>{name.name}</h2>
+      <div className="head">
+        <h2>❤️ {name.rating}</h2>
+      </div>
+
+      {/* <button onClick={() => navigate("/color-game")}> colors </button> */}
+      <p>{name.summary}</p>
+
+      {/* <p>{summary}</p> */}
+    </div>
+  );
 }
 function Home() {
   return (
