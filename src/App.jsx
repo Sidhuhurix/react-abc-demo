@@ -6,7 +6,7 @@ import { Colorgame } from "./colorgames";
 import { Movielist } from "./movies";
 
 import { Routes, Route, Link, json } from "react-router-dom";
-// import { Movie } from "@mui/icons-material";
+import { Movie } from "@mui/icons-material";
 import { Home } from "./Home";
 import { Error } from "./Error";
 import { MovieDetails } from "./MovieDetails";

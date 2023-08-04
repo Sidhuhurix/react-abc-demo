@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./mov.css";
 import Card from "@mui/material/Card";
+import DeleteIcon from "@mui/icons-material/Delete";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -17,17 +18,39 @@ import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 
 export function Movielist() {
-  const [Movies, setMovies] = useState([]);
-
-  useEffect(() => {
+  function refresh() {
     fetch("https://64c3961867cfdca3b65fef6d.mockapi.io/movies")
       .then((res) => res.json())
       .then((data) => setMovies(data));
+  }
+
+  const [Movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    refresh();
   }, []);
   const [name, setname] = useState();
   const [summary, setsummary] = useState();
   const [rating, setrating] = useState();
   const [poster, setposter] = useState();
+  function DeleteMovies(id) {
+    fetch("https://64c3961867cfdca3b65fef6d.mockapi.io/movies/" + id, {
+      method: "DELETE",
+    }).then((data) => refresh());
+  }
+
+  const AddName = (event) => {
+    const newMovie = {
+      name: name,
+      poster: poster,
+      rating: rating,
+      summary: summary,
+    };
+    // setMovies([
+    //   ...Movies,
+    //   newMovie,
+    // ]);
+  };
 
   return (
     <div className="App">
@@ -77,22 +100,9 @@ export function Movielist() {
           onChange={(event) => setposter(event.target.value)}
           placeholder="Poster link"
         /> */}
-        <button
-          onClick={(event) =>
-            setMovies([
-              ...Movies,
-              {
-                name: name,
-                poster: poster,
-                rating: rating,
-                summary: summary,
-              },
-            ])
-          }
-        >
-          Add Movie
-        </button>
+        <button onClick={() => AddName()}>Add Movie</button>
       </div>
+
       {/* {Name}-{rating}-{summary}-{poster} */}
       {Movies.map((x, index) => (
         <Moviecard
@@ -102,12 +112,17 @@ export function Movielist() {
           rating={x.rating}
           key={index}
           id={x.id}
+          DeleteIcon={
+            <IconButton onClick={() => DeleteMovies(x.id)}>
+              <DeleteIcon />
+            </IconButton>
+          }
         />
       ))}
     </div>
   );
 }
-function Moviecard({ name, poster, summary, rating, id }) {
+function Moviecard({ name, poster, summary, rating, id, DeleteIcon }) {
   const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
@@ -140,6 +155,8 @@ function Moviecard({ name, poster, summary, rating, id }) {
           </h2>{" "}
           <h2>❤️ {rating}</h2>
         </div>
+
+        {DeleteIcon}
         <IconButton
           onClick={() => setShow(show == true ? false : true)}
           color="primary"
