@@ -24,3 +24,20 @@ img {
   justify-content: space-between;
 
 }
+.nam {
+   display: flex;
+   text-align: center;
+   object-fit: cover;
+}
+.h1 {
+  display: flex;
+    justify-content: space-between;
+}
+
+.lin {
+
+  display: grid;
+  justify-content: space-between;
+  grid-row: 1fr 1fr 1fr 1fr ;
+  
+}

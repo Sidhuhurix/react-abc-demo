@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { ColorBox } from "./App";
+import { ColorBox } from "./ColorBox";
 //import { Colorgames } from "./App";
 
 export function Colorgame() {
